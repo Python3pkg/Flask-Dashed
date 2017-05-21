@@ -37,8 +37,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Flask_Dashed'
-copyright = u'2011, jean-philippe serafin'
+project = 'Flask_Dashed'
+copyright = '2011, jean-philippe serafin'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -175,8 +175,8 @@ htmlhelp_basename = 'Flask_Dasheddoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'Flask_Dashed.tex', u'Flask\\_Dashed Documentation',
-   u'jean-philippe serafin', 'manual'),
+  ('index', 'Flask_Dashed.tex', 'Flask\\_Dashed Documentation',
+   'jean-philippe serafin', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -208,8 +208,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'flask_dashed', u'Flask_Dashed Documentation',
-     [u'jean-philippe serafin'], 1)
+    ('index', 'flask_dashed', 'Flask_Dashed Documentation',
+     ['jean-philippe serafin'], 1)
 ]
 
 html_theme_options = {'index_logo': False,

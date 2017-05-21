@@ -5,8 +5,8 @@ from werkzeug import OrderedMultiDict
 from flask import Flask, url_for
 from flask.ext.testing import TestCase
 from flask.ext.sqlalchemy import SQLAlchemy
-from flask_dashed.admin import Admin, ObjectAdminModule
-from flask_dashed.ext.sqlalchemy import ModelAdminModule
+from .flask_dashed.admin import Admin, ObjectAdminModule
+from .flask_dashed.ext.sqlalchemy import ModelAdminModule
 from wtforms.ext.sqlalchemy.fields import QuerySelectField
 from sqlalchemy.orm import aliased, contains_eager
 
@@ -38,63 +38,63 @@ class Book(db.Model):
 class BaseTest(TestCase):
     def setUp(self):
         db.create_all()
-        alain_fournier = Author(name=u"Alain Fournier")
-        db.session.add(Book(title=u"Le grand Meaulnes",
+        alain_fournier = Author(name="Alain Fournier")
+        db.session.add(Book(title="Le grand Meaulnes",
             author=alain_fournier, year=1913))
-        db.session.add(Book(title=u"Miracles",
+        db.session.add(Book(title="Miracles",
             author=alain_fournier, year=1924))
-        db.session.add(Book(title=u"Lettres à sa famille",
+        db.session.add(Book(title="Lettres à sa famille",
             author=alain_fournier, year=1929))
-        db.session.add(Book(title=u"Lettres au petit B.",
+        db.session.add(Book(title="Lettres au petit B.",
             author=alain_fournier, year=1930))
 
-        charles_baudelaire = Author(name=u"Charles Baudelaire")
-        db.session.add(Book(title=u"La Fanfarlo",
+        charles_baudelaire = Author(name="Charles Baudelaire")
+        db.session.add(Book(title="La Fanfarlo",
             author=charles_baudelaire, year=1847))
-        db.session.add(Book(title=u"Du vin et du haschisch",
+        db.session.add(Book(title="Du vin et du haschisch",
             author=charles_baudelaire, year=1851))
-        db.session.add(Book(title=u"Fusées",
+        db.session.add(Book(title="Fusées",
             author=charles_baudelaire, year=1851))
-        db.session.add(Book(title=u"L'Art romantique",
+        db.session.add(Book(title="L'Art romantique",
             author=charles_baudelaire, year=1852))
-        db.session.add(Book(title=u"Morale du joujou",
+        db.session.add(Book(title="Morale du joujou",
             author=charles_baudelaire, year=1853))
-        db.session.add(Book(title=u"Exposition universelle",
+        db.session.add(Book(title="Exposition universelle",
             author=charles_baudelaire, year=1855))
-        db.session.add(Book(title=u"Les Fleurs du mal",
+        db.session.add(Book(title="Les Fleurs du mal",
             author=charles_baudelaire, year=1857))
-        db.session.add(Book(title=u"Le Poème du haschisch",
+        db.session.add(Book(title="Le Poème du haschisch",
             author=charles_baudelaire, year=1858))
-        db.session.add(Book(title=u"Les Paradis artificiels",
+        db.session.add(Book(title="Les Paradis artificiels",
             author=charles_baudelaire, year=1860))
-        db.session.add(Book(title=u"La Chevelure",
+        db.session.add(Book(title="La Chevelure",
             author=charles_baudelaire, year=1861))
-        db.session.add(Book(title=u"Réflexions sur quelques-uns de "
+        db.session.add(Book(title="Réflexions sur quelques-uns de "
             + "mes contemporains", author=charles_baudelaire, year=1861))
 
-        albert_camus = Author(name=u"Albert Camus")
-        db.session.add(Book(title=u"Révolte dans les Asturies",
+        albert_camus = Author(name="Albert Camus")
+        db.session.add(Book(title="Révolte dans les Asturies",
             author=albert_camus, year=1936))
-        db.session.add(Book(title=u"L'Envers et l'Endroit",
+        db.session.add(Book(title="L'Envers et l'Endroit",
             author=albert_camus, year=1937))
-        db.session.add(Book(title=u"Caligula", author=albert_camus, year=1938))
-        db.session.add(Book(title=u"Noces", author=albert_camus, year=1939))
-        db.session.add(Book(title=u"Le Mythe de Sisyphe",
+        db.session.add(Book(title="Caligula", author=albert_camus, year=1938))
+        db.session.add(Book(title="Noces", author=albert_camus, year=1939))
+        db.session.add(Book(title="Le Mythe de Sisyphe",
             author=albert_camus, year=1942))
-        db.session.add(Book(title=u"L'Étranger",
+        db.session.add(Book(title="L'Étranger",
             author=albert_camus, year=1942))
-        db.session.add(Book(title=u"Le Malentendu",
+        db.session.add(Book(title="Le Malentendu",
             author=albert_camus, year=1944))
-        db.session.add(Book(title=u"La Peste", author=albert_camus, year=1947))
-        db.session.add(Book(title=u"L'État de siège",
+        db.session.add(Book(title="La Peste", author=albert_camus, year=1947))
+        db.session.add(Book(title="L'État de siège",
             author=albert_camus, year=1948))
-        db.session.add(Book(title=u"Les Justes",
+        db.session.add(Book(title="Les Justes",
             author=albert_camus, year=1949))
-        db.session.add(Book(title=u"L'Homme révolté",
+        db.session.add(Book(title="L'Homme révolté",
             author=albert_camus, year=1951))
-        db.session.add(Book(title=u"L'Été", author=albert_camus, year=1954))
-        db.session.add(Book(title=u"La Chute", author=albert_camus, year=1956))
-        db.session.add(Book(title=u"L'Exil et le Royaume",
+        db.session.add(Book(title="L'Été", author=albert_camus, year=1954))
+        db.session.add(Book(title="La Chute", author=albert_camus, year=1956))
+        db.session.add(Book(title="L'Exil et le Royaume",
             author=albert_camus, year=1957))
 
         db.session.commit()
@@ -146,7 +146,7 @@ class AutoModelAdminModuleTest(BaseTest):
             return False
 
         self.assertIn(self.book_module.url_path,
-            admin.secure_functions.keys())
+            list(admin.secure_functions.keys()))
         r = self.client.get(url_for('admin.book_list'))
         self.assertEqual(r.status_code, 403)
         r = self.client.get(url_for('admin.book_new'))
@@ -161,7 +161,7 @@ class AutoModelAdminModuleTest(BaseTest):
         admin.register_module(self.AutoAuthorModule, '/author', 'author',
             'auto generated author module', parent=self.book_module)
         self.assertIn(self.book_module.url_path,
-            admin.secure_functions.keys())
+            list(admin.secure_functions.keys()))
         r = self.client.get(url_for('admin.author_list'))
         self.assertEqual(r.status_code, 403)
         r = self.client.get(url_for('admin.author_new'))

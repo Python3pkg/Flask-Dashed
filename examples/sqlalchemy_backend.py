@@ -29,7 +29,7 @@ class Company(db.Model):
     name = db.Column(db.String(255), unique=True, nullable=False)
 
     def __unicode__(self):
-        return unicode(self.name)
+        return str(self.name)
 
     def __repr__(self):
         return '<Company %r>' % self.name
@@ -81,7 +81,7 @@ class Group(db.Model):
         backref=db.backref("groups", lazy='dynamic'))
 
     def __unicode__(self):
-        return unicode(self.name)
+        return str(self.name)
 
     def __repr__(self):
         return '<Group %r>' % self.name

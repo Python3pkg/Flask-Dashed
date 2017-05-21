@@ -2,7 +2,7 @@
 import unittest
 from flask import Flask
 from flask.ext.testing import TestCase
-from flask_dashed.admin import Admin, AdminModule
+from .flask_dashed.admin import Admin, AdminModule
 
 
 class DashedTestCase(TestCase):

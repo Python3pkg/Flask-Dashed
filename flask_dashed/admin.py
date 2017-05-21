@@ -2,8 +2,9 @@
 from werkzeug import OrderedMultiDict
 
 from flask import Blueprint, url_for, request, abort
-from views import ObjectListView, ObjectFormView
-from views import ObjectDeleteView, secure
+from .views import ObjectListView, ObjectFormView
+from .views import ObjectDeleteView, secure
+import collections
 
 
 def recursive_getattr(obj, attr):
@@ -93,7 +94,7 @@ class Admin(object):
             main_dashboard=None, endpoint='admin'):
 
         if not main_dashboard:
-            from dashboard import DefaultDashboard
+            from .dashboard import DefaultDashboard
             main_dashboard = DefaultDashboard
 
         self.blueprint = Blueprint(endpoint, __name__,
@@ -168,7 +169,7 @@ class Admin(object):
 
         :param path: The path to check
         """
-        for key in self.secure_functions.iterkeys():
+        for key in self.secure_functions.keys():
             if path.startswith("%s%s" % (self.url_prefix, key)):
                 for function, http_code in self.secure_functions.getlist(key):
                     if not function():
@@ -327,10 +328,10 @@ class ObjectAdminModule(AdminModule):
         field = self.list_fields[field]
         if 'action' in field:
             title = field['action'].get('title', None)
-            if callable(title):
+            if isinstance(title, collections.Callable):
                 title = title(obj)
             url = field['action'].get('url', None)
-            if callable(url):
+            if isinstance(url, collections.Callable):
                 url = url(obj)
         return title, url
 
